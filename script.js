@@ -1,25 +1,54 @@
 
 const divs = ['generator1'];
-let stats = {
-    pwr: ExpantaNum(10),
-    tps: ExpantaNum(1),
-    gen1: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10),mpwr: ExpantaNum(1),scale: ExpantaNum(10)},
-    gen2: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100),mpwr: ExpantaNum(1),scale: ExpantaNum(100)},
-};
 const base = {
     pwr: ExpantaNum(10),
     tps: ExpantaNum(1),
     gen1: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10),mpwr: ExpantaNum(1),scale: ExpantaNum(10)},
     gen2: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100),mpwr: ExpantaNum(1),scale: ExpantaNum(100)},
 };
-let saveddata = localStorage.getItem("fred");
-if (saveddata) {
-    let loadeddata = JSON.parse(saveddata);
-    console.log(loadeddata);
-    stats.pwr = loadeddata[0];
-    stats.tps = loadeddata[1];
-    stats.gen1 = loadeddata[2];
-    stats.gen2 = loadeddata[3];
+let stats = {
+    pwr: ExpantaNum(10),
+    tps: ExpantaNum(1),
+    gen1: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10),mpwr: ExpantaNum(1),scale: ExpantaNum(10)},
+    gen2: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100),mpwr: ExpantaNum(1),scale: ExpantaNum(100)},
+};
+let savedData = localStorage.getItem("sav");
+
+if (savedData) {
+    try {
+        let loadedData = JSON.parse(savedData);
+        if (loadedData && typeof loadedData === 'object') {
+            Object.keys(loadedData).forEach(key => {
+                if (stats.hasOwnProperty(key)) {
+                    if (key === 'pwr' || key === 'tps') {
+                        stats[key] = ExpantaNum(loadedData[key]);
+                    } else if (typeof loadedData[key] === 'object') {
+                        Object.keys(loadedData[key]).forEach(subKey => {
+                            if (stats[key].hasOwnProperty(subKey)) {
+                                stats[key][subKey] = ExpantaNum(loadedData[key][subKey]);
+                            }
+                        });
+                    }
+                }
+            });
+            console.log('Data loaded successfully.');
+        } else {
+            console.error('Invalid data format in localStorage');
+        }
+    } catch (error) {
+        console.error('Error parsing saved data:', error);
+    }
+} else {
+    console.warn('No saved data found in localStorage');
+}
+
+function save() {
+    localStorage.setItem("sav", JSON.stringify(stats));
+    const saveNotification = document.getElementById('saveNotification');
+    saveNotification.style.display = 'block';
+    setTimeout(() => {
+        saveNotification.style.display = 'none';
+    }, 2000);
 }
 const one = new ExpantaNum(1)
 function HideOthers(not_hide) {
@@ -36,12 +65,12 @@ function HideOthers(not_hide) {
     });
 }
 function updateall(){
-    document.getElementById("pwrdis").innerText = stats.pwr.toFixed(3);
+    document.getElementById("pwrdis").innerText = stats.pwr.toFixed(4);
     stats.pwr = stats.pwr.add(stats.gen1.cur.mul(stats.gen1.mpwr.mul(stats.tps)).div(100));
     stats.gen1.cur = stats.gen1.cur.add(stats.gen2.cur.mul(stats.gen2.mpwr).div(100));
 
     document.getElementById("gen1buy").innerText = stats.gen1.cost.toString();
-    document.getElementById("gen1mul").innerText = `x ${stats.gen1.mpwr.toFixed(3)}`;
+    document.getElementById("gen1mul").innerText = `x ${stats.gen1.mpwr.toFixed(4)}`;
     document.getElementById("gen1amt").innerText = stats.gen1.cur.toString();
     document.getElementById("gen1bht").innerText = stats.gen1.mb.toString()+"/10";
 
@@ -63,20 +92,5 @@ function buygen(num){
         }
     }
 }
-function save(){
-    let data = stats;
-    let jsondata = JSON.stringify(data);
-    console.log("Saved Data");
-    console.log(jsondata);
-    localStorage.setItem('fred',jsondata);
-}
 setInterval(updateall,10);
-setInterval(save,60000)
-function resetdata(){
-    let data = base;
-    stats = base
-    let jsondata = JSON.stringify(data);
-    console.log("Reset Data");
-    console.log(jsondata);
-    localStorage.setItem('fred',jsondata);
-}
+setInterval(save,15000)
