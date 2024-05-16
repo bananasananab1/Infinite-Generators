@@ -1,16 +1,13 @@
 
 const divs = ['generator1'];
-const base = {
-    pwr: ExpantaNum(10),
-    tps: ExpantaNum(1),
-    gen1: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10),mpwr: ExpantaNum(1),scale: ExpantaNum(10)},
-    gen2: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100),mpwr: ExpantaNum(1),scale: ExpantaNum(100)},
-};
 let stats = {
     pwr: ExpantaNum(10),
     tps: ExpantaNum(1),
     gen1: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10),mpwr: ExpantaNum(1),scale: ExpantaNum(10)},
     gen2: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100),mpwr: ExpantaNum(1),scale: ExpantaNum(100)},
+    gen3: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(1000),mpwr: ExpantaNum(1),scale: ExpantaNum(1000)},
+    gen4: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10000),mpwr: ExpantaNum(1),scale: ExpantaNum(10000)},
+    gen5: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100000),mpwr: ExpantaNum(1),scale: ExpantaNum(100000)},
 };
 let savedData = localStorage.getItem("sav");
 
@@ -68,16 +65,21 @@ function updateall(){
     document.getElementById("pwrdis").innerText = stats.pwr.toFixed(4);
     stats.pwr = stats.pwr.add(stats.gen1.cur.mul(stats.gen1.mpwr.mul(stats.tps)).div(100));
     stats.gen1.cur = stats.gen1.cur.add(stats.gen2.cur.mul(stats.gen2.mpwr).div(100));
-
-    document.getElementById("gen1buy").innerText = stats.gen1.cost.toString();
-    document.getElementById("gen1mul").innerText = `x ${stats.gen1.mpwr.toFixed(4)}`;
-    document.getElementById("gen1amt").innerText = stats.gen1.cur.toString();
-    document.getElementById("gen1bht").innerText = stats.gen1.mb.toString()+"/10";
-
-    document.getElementById("gen2buy").innerText = stats.gen2.cost.toString();
-    document.getElementById("gen2mul").innerText = `x ${stats.gen2.mpwr.toFixed(3)}`;
-    document.getElementById("gen2amt").innerText = stats.gen2.cur.toString();
-    document.getElementById("gen2bht").innerText = stats.gen2.mb.toString()+"/10";
+    stats.gen2.cur = stats.gen2.cur.add(stats.gen3.cur.mul(stats.gen3.mpwr).div(100));
+    stats.gen3.cur = stats.gen3.cur.add(stats.gen4.cur.mul(stats.gen4.mpwr).div(100));
+    stats.gen4.cur = stats.gen4.cur.add(stats.gen5.cur.mul(stats.gen5.mpwr).div(100));
+    function updgen(num) {
+        const gennum = "gen"+num
+        document.getElementById(gennum+"buy").innerText = stats[gennum].cost.toString();
+        document.getElementById(gennum+"mul").innerText = `x ${stats[gennum].mpwr.toFixed(3)}`;
+        document.getElementById(gennum+"amt").innerText = stats[gennum].cur.toString();
+        document.getElementById(gennum+"bht").innerText = stats[gennum].mb.toString()+"/10";
+    }
+    updgen(1);
+    updgen(2);
+    updgen(3);
+    updgen(4);
+    updgen(5);
 }
 function buygen(num){
     const gen = stats['gen'+num]
