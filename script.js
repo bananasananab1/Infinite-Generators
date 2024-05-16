@@ -6,6 +6,21 @@ let stats = {
     gen1: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10),mpwr: ExpantaNum(1),scale: ExpantaNum(10)},
     gen2: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100),mpwr: ExpantaNum(1),scale: ExpantaNum(100)},
 };
+const base = {
+    pwr: ExpantaNum(10),
+    tps: ExpantaNum(1),
+    gen1: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10),mpwr: ExpantaNum(1),scale: ExpantaNum(10)},
+    gen2: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100),mpwr: ExpantaNum(1),scale: ExpantaNum(100)},
+};
+let saveddata = localStorage.getItem("fred");
+if (saveddata) {
+    let loadeddata = JSON.parse(saveddata);
+    console.log(loadeddata);
+    stats.pwr = loadeddata[0];
+    stats.tps = loadeddata[1];
+    stats.gen1 = loadeddata[2];
+    stats.gen2 = loadeddata[3];
+}
 const one = new ExpantaNum(1)
 function HideOthers(not_hide) {
     console.log(`All But ${not_hide}`);
@@ -48,4 +63,20 @@ function buygen(num){
         }
     }
 }
+function save(){
+    let data = stats;
+    let jsondata = JSON.stringify(data);
+    console.log("Saved Data");
+    console.log(jsondata);
+    localStorage.setItem('fred',jsondata);
+}
 setInterval(updateall,10);
+setInterval(save,60000)
+function resetdata(){
+    let data = base;
+    stats = base
+    let jsondata = JSON.stringify(data);
+    console.log("Reset Data");
+    console.log(jsondata);
+    localStorage.setItem('fred',jsondata);
+}
