@@ -2,8 +2,9 @@
 const divs = ['generator1'];
 let stats = {
     pwr: ExpantaNum(10),
-    tps: ExpantaNum(100),
+    tps: ExpantaNum(1),
     gen1: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10),mpwr: ExpantaNum(1),scale: ExpantaNum(10)},
+    gen2: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100),mpwr: ExpantaNum(1),scale: ExpantaNum(100)},
 };
 const one = new ExpantaNum(1)
 function HideOthers(not_hide) {
@@ -21,20 +22,30 @@ function HideOthers(not_hide) {
 }
 function updateall(){
     document.getElementById("pwrdis").innerText = stats.pwr.toFixed(3);
-    document.getElementById("gen1amt").innerText = stats.gen1.cur.toString();
-    stats.pwr = stats.pwr.add(stats.gen1.cur.mul(stats.gen1.mpwr).div(100));
+    stats.pwr = stats.pwr.add(stats.gen1.cur.mul(stats.gen1.mpwr.mul(stats.tps)).div(100));
+    stats.gen1.cur = stats.gen1.cur.add(stats.gen2.cur.mul(stats.gen2.mpwr).div(100));
+
     document.getElementById("gen1buy").innerText = stats.gen1.cost.toString();
+    document.getElementById("gen1mul").innerText = `x ${stats.gen1.mpwr.toFixed(3)}`;
+    document.getElementById("gen1amt").innerText = stats.gen1.cur.toString();
+    document.getElementById("gen1bht").innerText = stats.gen1.mb.toString()+"/10";
+
+    document.getElementById("gen2buy").innerText = stats.gen2.cost.toString();
+    document.getElementById("gen2mul").innerText = `x ${stats.gen2.mpwr.toFixed(3)}`;
+    document.getElementById("gen2amt").innerText = stats.gen2.cur.toString();
+    document.getElementById("gen2bht").innerText = stats.gen2.mb.toString()+"/10";
 }
-function buygen1(){
-    if (stats.pwr.gte(stats.gen1.cost)){
-        stats.pwr = stats.pwr.sub(stats.gen1.cost);
-        stats.gen1.cur = stats.gen1.cur.add(1);
-        stats.gen1.mb = stats.gen1.mb.add(1);
-        if (stats.gen1.mb.gte(10)){
-        stats.gen1.cost = stats.gen1.cost.mul(stats.gen1.scale);
-        stats.gen1.mb = ExpantaNum(0);
-        stats.gen1.mpwr = stats.gen1.mpwr.mul(1.5);
+function buygen(num){
+    const gen = stats['gen'+num]
+    if (stats.pwr.gte(gen.cost)){
+        stats.pwr = stats.pwr.sub(gen.cost);
+        gen.cur = gen.cur.add(1);
+        gen.mb = gen.mb.add(1);
+        if (gen.mb.gte(10)){
+        gen.cost = gen.cost.mul(gen.scale);
+        gen.mb = ExpantaNum(0);
+        gen.mpwr = gen.mpwr.mul(1.5);
         }
     }
 }
-setInterval(updateall,one.div(stats.tps).toNumber);
+setInterval(updateall,10);

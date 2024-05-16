@@ -7,10 +7,18 @@
     </head>
     <body>
         <p>Power: <span id="pwrdis">0</p>
-        <button onclick = 'HideOthers("generator1")'>Generators</button>
-        <div id='generator1' class="generators">
-            <p>Generator 1: <span id="gen1amt">0</p>
-            <button onclick="buygen1()">cost: <span id="gen1buy">cost</span></button>
+        <button onclick = 'HideOthers("generators")'>Generators</button>
+        <div id="generators" class="generators">
+            <div class="generators">
+                <p>Generator 1: <span id="gen1amt">0</p>
+                <button onclick="buygen(1)">cost: <span id="gen1buy">cost</span></button>
+                <p style="font-size: 10;" id="gen1mul">x 1</p> <p style="font-size: 10;" id="gen1bht">10/10</p>
+            </div>
+            <div class="generators">
+                <p>Generator 2: <span id="gen2amt">0</p>
+                <button onclick="buygen(2)">cost: <span id="gen2buy">cost</span></button>
+                <p style="font-size: 10;" id="gen2mul">x 1</p> <p style="font-size: 10;" id="gen2bht">10/10</p>
+            </div>
         </div>
         <div id='Test' class="Test">
             <p>Test</p>
