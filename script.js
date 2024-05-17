@@ -80,10 +80,10 @@ function updateall(){
     stats.gen9.cur = stats.gen9.cur.add(stats.gen10.cur.mul(stats.gen10.mpwr).div(100));
     function updgen(num) {
         const gennum = "gen"+num
-        document.getElementById(gennum+"buy").innerText = stats[gennum].cost.toString();
+        document.getElementById(gennum+"buy").innerText = stats[gennum].cost.toFixed(3);
         document.getElementById(gennum+"mul").innerText = `x ${stats[gennum].mpwr.toFixed(3)}`;
-        document.getElementById(gennum+"amt").innerText = stats[gennum].cur.toString();
-        document.getElementById(gennum+"bht").innerText = stats[gennum].mb.toString()+"/10";
+        document.getElementById(gennum+"amt").innerText = stats[gennum].cur.toFixed(3);
+        document.getElementById(gennum+"bht").innerText = stats[gennum].mb.toFixed(3)+"/10";
     }
     updgen(1);
     updgen(2);
