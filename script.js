@@ -8,6 +8,11 @@ let stats = {
     gen3: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(1000),mpwr: ExpantaNum(1),scale: ExpantaNum(1000)},
     gen4: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10000),mpwr: ExpantaNum(1),scale: ExpantaNum(10000)},
     gen5: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100000),mpwr: ExpantaNum(1),scale: ExpantaNum(100000)},
+    gen6: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(1000000),mpwr: ExpantaNum(1),scale: ExpantaNum(1000000)},
+    gen7: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10000000),mpwr: ExpantaNum(1),scale: ExpantaNum(10000000)},
+    gen8: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(100000000),mpwr: ExpantaNum(1),scale: ExpantaNum(100000000)},
+    gen9: {mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(1000000000),mpwr: ExpantaNum(1),scale: ExpantaNum(1000000000)},
+    gen10:{mb: ExpantaNum(0),cur: ExpantaNum(0),cost: ExpantaNum(10000000000),mpwr: ExpantaNum(1),scale: ExpantaNum(10000000000)},
 };
 let savedData = localStorage.getItem("sav");
 
@@ -68,6 +73,11 @@ function updateall(){
     stats.gen2.cur = stats.gen2.cur.add(stats.gen3.cur.mul(stats.gen3.mpwr).div(100));
     stats.gen3.cur = stats.gen3.cur.add(stats.gen4.cur.mul(stats.gen4.mpwr).div(100));
     stats.gen4.cur = stats.gen4.cur.add(stats.gen5.cur.mul(stats.gen5.mpwr).div(100));
+    stats.gen5.cur = stats.gen5.cur.add(stats.gen6.cur.mul(stats.gen6.mpwr).div(100));
+    stats.gen6.cur = stats.gen6.cur.add(stats.gen7.cur.mul(stats.gen7.mpwr).div(100));
+    stats.gen7.cur = stats.gen7.cur.add(stats.gen8.cur.mul(stats.gen8.mpwr).div(100));
+    stats.gen8.cur = stats.gen8.cur.add(stats.gen9.cur.mul(stats.gen9.mpwr).div(100));
+    stats.gen9.cur = stats.gen9.cur.add(stats.gen10.cur.mul(stats.gen10.mpwr).div(100));
     function updgen(num) {
         const gennum = "gen"+num
         document.getElementById(gennum+"buy").innerText = stats[gennum].cost.toString();
@@ -80,6 +90,11 @@ function updateall(){
     updgen(3);
     updgen(4);
     updgen(5);
+    updgen(6);
+    updgen(7);
+    updgen(8);
+    updgen(9);
+    updgen(10);
 }
 function buygen(num){
     const gen = stats['gen'+num]
