@@ -7,7 +7,9 @@
     </head>
     <body>
         <p>Power: <span id="pwrdis">0</p>
+        <p>Hyper Power: <span id="hyperdis">0 Hyper Power</p>
         <button onclick = 'HideOthers("generators")'>Generators</button>
+        <button onclick="HideOthers('HypPwr')">Hyper Power</button>
         <div id="generators" class="generators">
             <div class="generators">
                 <p>Generator 1: <span id="gen1amt">0</p>
@@ -60,8 +62,48 @@
                 <p style="font-size: 10;" id="gen10mul">x 1</p> <p style="font-size: 10;" id="gen10bht">10/10</p>
             </div>
         </div>
-        <div id="saveNotification" class="notification">
-            Game saved.
+        <div id="HypPwr" class="HyperMain">
+            <button onclick="HyperPower()">Gain <span id="hypergdis">0 Hyper Power</span></button>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(1)">Gen1 AutoBuyer: <span id="g1ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g1auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(2)">Gen1 AutoBuyer: <span id="g2ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g2auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(3)">Gen1 AutoBuyer: <span id="g3ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g3auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(4)">Gen1 AutoBuyer: <span id="g4ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g4auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(5)">Gen1 AutoBuyer: <span id="g5ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g5auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(6)">Gen1 AutoBuyer: <span id="g6ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g6auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(7)">Gen1 AutoBuyer: <span id="g7ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g7auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(8)">Gen1 AutoBuyer: <span id="g8ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g8auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(9)">Gen1 AutoBuyer: <span id="g9ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g9auco">123 Hyper Power</span></p>
+            </div>
+            <div class="HyperUpgrades">
+                <button onclick="HypUpg(10)">Gen1 AutoBuyer: <span id="g10ausp">1 per 1 second</span></button>
+                <p>Cost: <span id="g10auco">123 Hyper Power</span></p>
+            </div>
         </div>
     </body>
 </html>

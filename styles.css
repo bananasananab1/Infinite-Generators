@@ -2,7 +2,6 @@ body {
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: #f7f7f7;
-    color: #333;
     position: relative;
 }
 p {
@@ -28,6 +27,25 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.HyperMain {
+    display: none;
+    /*rest of hyper mainframe*/
+}
+.HyperUpgrades {
+    /*Hyper Upgrades*/
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgb(172, 43, 43);
+    p {
+        color: rgb(221, 64, 64);
+    };
+    button {
+        color:#ff0c0c;
+    }
+    /*rest of hyper upgrades*/
+}
 .notification {
     position: absolute;
     top: 20px;
@@ -38,7 +56,7 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 999;
-    display: none;
+    display: block;
     animation: fadeInOut 2s forwards;
 }
 
