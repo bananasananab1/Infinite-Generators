@@ -26,7 +26,8 @@ let stats = {
     HypUpg9: {cur: ExpantaNum(0),cost: ExpantaNum(100000000),rate: ExpantaNum(0),max: ExpantaNum(15)},
     HypUpg10: {cur: ExpantaNum(0),cost:ExpantaNum(1000000000),rate: ExpantaNum(0),max: ExpantaNum(15)},
     HypUpgPwr: {cur: ExpantaNum(0),cost: ExpantaNum(1),buff: ExpantaNum(1),max: ExpantaNum(1e4)},
-    HypUpgHyp: {cur: ExpantaNum(0),cost: ExpantaNum(1),buff: ExpantaNum(1),max: ExpantaNum(1e4)}
+    HypUpgHyp: {cur: ExpantaNum(0),cost: ExpantaNum(1),buff: ExpantaNum(1),max: ExpantaNum(1e4)},
+    tps: {cur: ExpantaNum(0),cost: ExpantaNum(1),buff: ExpantaNum(1),}
 };
 function load() {
     let savedData = localStorage.getItem(saveloc);
@@ -153,6 +154,8 @@ function updateall(){
     document.getElementById("gPwrP").innerText = `x ${stats["HypUpgPwr"].buff.toFixed(3)} Power`;
     document.getElementById("gHypco").innerText = `${stats["HypUpgHyp"].cost.toFixed(3)} Hyper Power`;
     document.getElementById("gHypP").innerText = `x ${stats["HypUpgHyp"].buff.toFixed(3)} Hyper Power`;
+    document.getElementById("gtpsco").innerText = `${stats.tps.cost.toFixed(3)} Hyper Power`;
+    document.getElementById("gtpsP").innerText = `x ${stats.tps.buff.toFixed(3)} TickSpeed`;
     upd('1');
     upd('2');
     upd('3');
@@ -209,7 +212,7 @@ function HyperPower(nfgvhcd) {
         reset(10);
     }
 }
-let autos = {1:false,2:false,3:false,4:false,5:false,6:false,7:false,8:false,9:false,10:false,pwr:false};
+let autos = {1:false,2:false,3:false,4:false,5:false,6:false,7:false,8:false,9:false,10:false};
 function HypUpg(num){
     const upg = stats['HypUpg'+num];
     if (autos[num] == false && !upg.rate.eq(0)) {
@@ -237,6 +240,14 @@ function HypUpg(num){
             }
             upg.cost = ExpantaNum(2).pow(upg.cur).mul(upg.cost);
         }
+    }
+}
+function TickSpeed(){
+    if (stats.HypPwr.eq(stats.tps.cost)){
+        stats.HypPwr = stats.HypPwr.sub(stats.tps.cost);
+        stats.tps.buff = stats.tps.buff.mul(1.25);
+        stats.tps.cost = stats.tps.cost.mul(1e3);
+        stats.tps.cur = stats.tps.cur.add(1);
     }
 }
 setInterval(updateall,10);
