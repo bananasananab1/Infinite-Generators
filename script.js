@@ -127,7 +127,7 @@ function updateall(){
     document.getElementById("pwrdis").innerText = stats.pwr.toFixed(4);
     document.getElementById("hyperdis").innerText = stats.HypPwr.toFixed(4);
     document.getElementById("hypergdis").innerText = ` gain ${HyperPower(true).toFixed(4)} Hyper Power`;
-    stats.pwr = stats.pwr.add(stats.gen1.cur.mul(stats.gen1.mpwr).mul(stats.HypUpgPwr.buff).div(100));
+    stats.pwr = stats.pwr.add(stats.gen1.cur.mul(stats.gen1.mpwr).mul(stats.HypUpgPwr.buff).div(100).mul(stats.tps.buff));
     function gaingen(num){
         let num2 = String(Number(num)+1);
         stats["gen"+num].cur = stats["gen"+num].cur.add(stats["gen"+num2].cur.mul(stats["gen"+num2].mpwr).div(100));
@@ -243,7 +243,7 @@ function HypUpg(num){
     }
 }
 function TickSpeed(){
-    if (stats.HypPwr.eq(stats.tps.cost)){
+    if (stats.HypPwr.gte(stats.tps.cost)){
         stats.HypPwr = stats.HypPwr.sub(stats.tps.cost);
         stats.tps.buff = stats.tps.buff.mul(1.25);
         stats.tps.cost = stats.tps.cost.mul(1e3);
