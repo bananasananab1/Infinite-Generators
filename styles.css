@@ -27,25 +27,37 @@ button:hover {
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.HyperMain {
-    display: none;
-    /*rest of hyper mainframe*/
+
+#pwrdis, #hyperdis {
+    font-size: 20px;
 }
-.HyperUpgrades {
-    /*Hyper Upgrades*/
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #000000;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgb(172, 43, 43);
-    p {
-        color: rgb(221, 64, 64);
-    };
-    button {
-        color:#ff0c0c;
-    }
-    /*rest of hyper upgrades*/
+
+.HyperMain .HyperUpgradeRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
+
+.HyperMain .HyperUpgrade {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.HyperMain .HyperUpgrade p {
+    margin: 5px 0;
+}
+
+.HyperMain .HyperUpgrade {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+    background-color: #f0f0f0; /* Light grey background */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Inner padding */
+}
+
 .notification {
     position: absolute;
     top: 20px;
