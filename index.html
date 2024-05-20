@@ -63,59 +63,84 @@
             </div>
         </div>
         <div id="HypPwr" class="HyperMain">
-            <button onclick="HyperPower()"><span id="hypergdis">0 Hyper Power</span></button>
-            <div class="HyperUpgrades">
-                <button onclick="TickSpeed()">TickSpeed: <span id="gtpsP">xNaN</span></button>
-                <p>Cost: <span id="gtpsco">123 Hyper Power</span></p>
+        <button onclick="HyperPower()"><span id="hypergdis">0 Hyper Power</span></button>
+        <div class="HyperUpgrades">
+            <div class="HyperUpgradeRow">
+                <div class="HyperUpgrade">
+                    <p>TickSpeed: <span id="gtpsP">xNaN</span></p>
+                    <button onclick="TickSpeed()">Buy</button>
+                    <p>Cost: <span id="gtpsco">123 Hyper Power</span></p>
+                </div>
+                <div class="HyperUpgrade">
+                    <p>Gen1 AutoBuyer: <span id="g1ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(1)">Buy</button>
+                    <p>Cost: <span id="g1auco">123 Hyper Power</span></p>
+                </div>
+                <div class="HyperUpgrade">
+                    <p>Gen2 AutoBuyer: <span id="g2ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(2)">Buy</button>
+                    <p>Cost: <span id="g2auco">123 Hyper Power</span></p>
+                </div>
             </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(1)">Gen1 AutoBuyer: <span id="g1ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g1auco">123 Hyper Power</span></p>
+            <div class="HyperUpgradeRow">
+                <div class="HyperUpgrade">
+                    <p>Gen3 AutoBuyer: <span id="g3ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(3)">Buy</button>
+                    <p>Cost: <span id="g3auco">123 Hyper Power</span></p>
+                </div>
+                <div class="HyperUpgrade">
+                    <p>Gen4 AutoBuyer: <span id="g4ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(4)">Buy</button>
+                    <p>Cost: <span id="g4auco">123 Hyper Power</span></p>
+                </div>
+                <div class="HyperUpgrade">
+                    <p>Gen5 AutoBuyer: <span id="g5ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(5)">Buy</button>
+                    <p>Cost: <span id="g5auco">123 Hyper Power</span></p>
+                </div>
             </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(2)">Gen2 AutoBuyer: <span id="g2ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g2auco">123 Hyper Power</span></p>
+            <div class="HyperUpgradeRow">
+                <div class="HyperUpgrade">
+                    <p>Gen6 AutoBuyer: <span id="g6ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(6)">Buy</button>
+                    <p>Cost: <span id="g6auco">123 Hyper Power</span></p>
+                </div>
+                <div class="HyperUpgrade">
+                    <p>Gen7 AutoBuyer: <span id="g7ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(7)">Buy</button>
+                    <p>Cost: <span id="g7auco">123 Hyper Power</span></p>
+                </div>
+                <div class="HyperUpgrade">
+                    <p>Gen8 AutoBuyer: <span id="g8ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(8)">Buy</button>
+                    <p>Cost: <span id="g8auco">123 Hyper Power</span></p>
+                </div>
             </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(3)">Gen3 AutoBuyer: <span id="g3ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g3auco">123 Hyper Power</span></p>
+            <div class="HyperUpgradeRow">
+                <div class="HyperUpgrade">
+                    <p>Gen9 AutoBuyer: <span id="g9ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(9)">Buy</button>
+                    <p>Cost: <span id="g9auco">123 Hyper Power</span></p>
+                </div>
+                <div class="HyperUpgrade">
+                    <p>Gen10 AutoBuyer: <span id="g10ausp">1 per 1 second</span></p>
+                    <button onclick="HypUpg(10)">Buy</button>
+                    <p>Cost: <span id="g10auco">123 Hyper Power</span></p>
+                </div>
+                <div class="HyperUpgrade">
+                    <p>Power Multiplier: <span id="gPwrP">xNaN</span></p>
+                    <button onclick="HypUpg('Pwr')">Buy</button>
+                    <p>Cost: <span id="gPwrco">123 Hyper Power</span></p>
+                </div>
             </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(4)">Gen4 AutoBuyer: <span id="g4ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g4auco">123 Hyper Power</span></p>
-            </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(5)">Gen5 AutoBuyer: <span id="g5ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g5auco">123 Hyper Power</span></p>
-            </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(6)">Gen6 AutoBuyer: <span id="g6ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g6auco">123 Hyper Power</span></p>
-            </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(7)">Gen7 AutoBuyer: <span id="g7ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g7auco">123 Hyper Power</span></p>
-            </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(8)">Gen8 AutoBuyer: <span id="g8ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g8auco">123 Hyper Power</span></p>
-            </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(9)">Gen9 AutoBuyer: <span id="g9ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g9auco">123 Hyper Power</span></p>
-            </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg(10)">Gen10 AutoBuyer: <span id="g10ausp">1 per 1 second</span></button>
-                <p>Cost: <span id="g10auco">123 Hyper Power</span></p>
-            </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg('Pwr')">Power Multiplier: <span id="gPwrP">xNaN</span></button>
-                <p>Cost: <span id="gPwrco">123 Hyper Power</span></p>
-            </div>
-            <div class="HyperUpgrades">
-                <button onclick="HypUpg('Hyp')">Hyper Power Multiplier: <span id="gHypP">xNaN</span></button>
-                <p>Cost: <span id="gHypco">123 Hyper Power</span></p>
+            <div class="HyperUpgradeRow">
+                <div class="HyperUpgrade">
+                    <p>Hyper Power Multiplier: <span id="gHypP">xNaN</span></p>
+                    <button onclick="HypUpg('Hyp')">Buy</button>
+                    <p>Cost: <span id="gHypco">123 Hyper Power</span></p>
+                </div>
             </div>
         </div>
+    </div>
     </body>
 </html>
